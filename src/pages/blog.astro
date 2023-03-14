@@ -1,0 +1,33 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Post from "../components/Post.astro";
+
+/* Astro no tiene una manera de consultar apis especiales, es tan normalo como usar JS a diferencia de Nextjs y remix */
+const url = `${import.meta.env.PUBLIC_API_URL}/posts?populate=imagen`;
+const respuesta = await fetch(url);
+const { data } = await respuesta.json();
+---
+
+<Layout
+  title="Blog"
+  description="Pagina de blog, cursos, venta de guitarras y más"
+>
+  <main class="contenedor">
+    <h1 class="heading">Blog</h1>
+    <div class="grid">
+      {
+        data?.map((post) => (
+          <Post
+            titulo={post.attributes.titulo}
+            contenido={post.attributes.contenido}
+            imagen={post.attributes.imagen.data.attributes.formats.medium.url}
+            publishedAt={post.attributes.publishedAt}
+            url={post.attributes.url}
+          />
+        ))
+      }
+    </div>
+  </main>
+</Layout>
+
+<style></style>

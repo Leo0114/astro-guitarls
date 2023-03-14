@@ -1,0 +1,42 @@
+---
+import Layout from "../layouts/Layout.astro";
+import nostros from "../img/nosotros.jpg";
+---
+
+<Layout
+  title="Nosotros"
+  description="Pagina de blog, cursos, venta de guitarras y más"
+>
+  <main class="contenedor">
+    <h1 class="heading">Nosotros</h1>
+    <div class="contenido">
+      <img src={nostros} alt="Imagen sobre nosotros" />
+      <div>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vitae autem
+          accusamus fugit rerum! Libero quia laudantium maiores? Corrupti,
+          eveniet. Quo?
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
+          possimus aliquid ea illo ipsum! Voluptatibus omnis suscipit est.
+          Dolorem nostrum quos dolores, doloremque voluptates iusto maxime
+          ducimus molestiae, accusamus adipisci architecto.
+        </p>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .contenido {
+    display: grid;
+    gap: 4rem;
+  }
+  @media (min-width: 768px) {
+    .contenido {
+      grid-template-columns: repeat(2, 1fr);
+      align-items: center;
+    }
+  }
+</style>
